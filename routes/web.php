@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AddressController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [AddressController::class, 'index'])->name('address.index');
+Route::get('/find', [AddressController::class, 'find'])->name('address.find');
+Route::post('/store', [AddressController::class, 'store'])->name('address.store');
+Route::get('/show/{cep}', [AddressController::class, 'show'])->name('address.show');
